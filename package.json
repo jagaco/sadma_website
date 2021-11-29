@@ -1,8 +1,8 @@
 {
   "name": "webapp",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Jaime Garcia",
+  "homepage": "https://sadma.com.mx/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
