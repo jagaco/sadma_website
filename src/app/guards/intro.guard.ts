@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Router } from '@angular/router';
+import { Storage } from '@capacitor/storage';
 
-
+export const INTRO_KEY = 'intro_seen';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,13 @@ export class IntroGuard implements CanLoad {
   
   //@LocalStorage() introSeenVal: Object;
 
-  KEY = 'intro_seen';
+  
   value: any = null;
 
-  constructor(private router: Router, private local: LocalStorageService){ }
+  constructor(private router: Router){ }
   
   async canLoad(): Promise<boolean>{
-    const hasSeenIntro: any = this.local.get(this.KEY);
+    const hasSeenIntro = await Storage.get({key: INTRO_KEY});
     
     //const hasSeenIntro = await Storage.get({key: INTRO_KEY})
 
@@ -25,7 +26,7 @@ export class IntroGuard implements CanLoad {
         return true;
       } else {
         console.log("has not seen", hasSeenIntro.value);
-        //this.router.navigateByUrl('/intro', { replaceUrl: true });
+        this.router.navigateByUrl('/intro', { replaceUrl: true });
         return true;
       }
   }
