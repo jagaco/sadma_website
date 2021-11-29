@@ -35,6 +35,14 @@ const routes: Routes = [
   {
     path: 'services',
     loadChildren: () => import('./pages/services/services.module').then( m => m.ServicesPageModule)
+  },
+  {
+    path: 'services',
+    loadChildren: () => import('./pages/services/services.module').then( m => m.ServicesPageModule)
+  },
+  {
+    path: 'mysadma',
+    loadChildren: () => import('./pages/mysadma/mysadma.module').then( m => m.MysadmaPageModule)
   }
 ];
 @NgModule({
