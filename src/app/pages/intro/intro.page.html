@@ -1,9 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>intro</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-slides pager="true">
+    
+  <!-- Slide 1 -->
+  <ion-slide>
+    <ion-text color="light">
+      <img src="https://i1.wp.com/ionicacademy.com/wp-content/uploads/2019/10/async-code-course.png">
+      <h1>Hey there!</h1>
+      <p>This is a epic app ...</p>
+      <ion-button (click)="next()" fill="outline" color="light">Next</ion-button>
+    </ion-text>
+  </ion-slide>
 
-</ion-content>
+    <!-- Slide 1 -->
+    <ion-slide>
+      <ion-text color="light">
+        <img src="https://i1.wp.com/ionicacademy.com/wp-content/uploads/2020/06/ionic-everywhere-course.png">
+        <h1>its SADMA</h1>
+        <p>... IT WHOWS ALL THE BASICS YOUR NEED!</p>
+        <ion-button (click)="start()" fill="outline" color="light">Start</ion-button>
+      </ion-text>
+    </ion-slide>
+
+  </ion-slides>
+  
+  </ion-content>

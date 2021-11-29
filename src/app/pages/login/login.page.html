@@ -1,9 +1,47 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Sadma Web App</ion-title>
   </ion-toolbar>
 </ion-header>
-
+ 
 <ion-content>
-
+ 
+  <form (ngSubmit)="login()" [formGroup]="credentials">
+    <div>
+  
+      <a>BIENVENIDO A SADMA SOLUTIONS</a> <br>
+      <a>AHORA ESTAS MAS PROTEGIDO QUE NUNCA</a>
+  
+    </div>
+    <div class="input-group">
+      <ion-item>
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+      <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+        <span *ngIf="email.errors?.required">Se require Email</span>
+        <span *ngIf="email.errors?.email">Email no valido</span>
+      </div>
+      <ion-item>
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+      <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+        <span *ngIf="password.errors?.required">La contraseña es requerida</span>
+        <span *ngIf="password.errors?.minlength">La contraseña requiere por lo menos 6 caracteres</span>
+      </div>
+    </div>
+ 
+    <ion-button type="submit" expand="block" [disabled]="!credentials.valid">Inciai session</ion-button>
+    
+    <ion-button type="button" expand="block" color="light" fill="clear">Aun no eres miembro? Registrate !!
+    </ion-button>
+ 
+    <ion-button type="button" expand="block" color="tertiary">
+      <ion-icon name="logo-google" slot="start"></ion-icon>
+      Inicia session con Google
+    </ion-button>
+    <ion-button type="button" expand="block" color="tertiary">
+      <ion-icon name="logo-apple" slot="start"></ion-icon>
+      Inicia session con Apple
+    </ion-button>
+  </form>
 </ion-content>
