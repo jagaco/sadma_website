@@ -32,7 +32,7 @@ export class AuthenticationService {
   }
  
   login(credentials: {email, password}): Observable<any> {
-    return this.http.post(`https://reqres.in/api/login`, credentials).pipe(
+    return this.http.post(`http://localhost:3000/user/singin`, credentials).pipe(
       map((data: any) => data.token),
       switchMap(token => {
         return from( Storage.set({ key: TOKEN_KEY, value: token }));
