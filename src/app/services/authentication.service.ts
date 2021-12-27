@@ -20,6 +20,9 @@ export class AuthenticationService {
     this.loadToken();
   }
  
+  getUserSubject(){
+    return this.isAuthenticated.asObservable();
+  }
   async loadToken() {
     const token = await  Storage.get({ key: TOKEN_KEY });
     if (token && token.value) {

@@ -8,9 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
  
 import { HttpClientModule } from '@angular/common/http';
+import { HasRoleDirective } from './directives/has-role.directive';
+import { SharedDirectivesDirective } from './directives/shared-directives.directive';
  
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HasRoleDirective, SharedDirectivesDirective],
   entryComponents: [],
   imports: [
     BrowserModule,

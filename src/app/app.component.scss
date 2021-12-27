@@ -1,0 +1,21 @@
+  ion-menu.md ion-content {
+    --padding-start: 8px;
+    --padding-end: 8px;
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+  }
+  ion-grid {
+    size: 100px;
+    
+    text-align: center;
+  }
+  ion-col {
+    size: 100px;
+    text-align: center;    
+  }
+  ion-col {
+    size-adjust: true;
+    border: 5px solid grey;
+    text-align: center;
+    
+  }

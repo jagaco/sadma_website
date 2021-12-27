@@ -6,6 +6,19 @@ import { AutoLoginGuard } from './guards/auto-login.guard';
  
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'home/:id',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canLoad: [AuthGuard] // Secure all child pages
+  },
+  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
     canLoad: [IntroGuard, AutoLoginGuard] // Check if we should show the introduction or forward to inside
@@ -20,21 +33,8 @@ const routes: Routes = [
     canLoad: [AuthGuard] // Secure all child pages
   },
   {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
-  },
-  {
-    path: 'mysadma',
-    loadChildren: () => import('./pages/mysadma/mysadma.module').then( m => m.MysadmaPageModule)
-  },
-  {
     path: 'news',
     loadChildren: () => import('./pages/news/news.module').then( m => m.NewsPageModule)
-  },
-  {
-    path: 'services',
-    loadChildren: () => import('./pages/services/services.module').then( m => m.ServicesPageModule)
   },
   {
     path: 'services',

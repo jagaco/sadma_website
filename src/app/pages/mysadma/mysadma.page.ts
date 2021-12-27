@@ -18,17 +18,5 @@ export class MysadmaPage implements OnInit {
     await this.authService.logout();
     this.router.navigateByUrl('/', { replaceUrl: true });
   }
-  openMenu() {
-    this.menuCtrl.open();
-  }
- 
-  closeMenu() {
-    this.menuCtrl.close();
-  }
- 
-  toggleMenu() {
-    this.menuCtrl.toggle();
-  }
-
 
 }

@@ -1,4 +1,86 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-header color="dark">
+    <ion-toolbar color="dark">
+
+      <ion-buttons slot="end"  >
+        <ion-button (click)="login()">
+          <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+        </ion-button>
+
+        <ion-button>
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-button>
+
+      </ion-buttons>
+
+      <ion-buttons slot="start" >
+        <ion-button *ngIf="authenticated" >
+          <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+        </ion-button>
+
+        <ion-item color="dark">
+          <img width="200" height="50" alt="" data-mu-svgfallback="https://www.sadma.com.mx/images/logoc_poster_.png?crc=514355760" src="https://www.sadma.com.mx/images/logoc.svg?crc=3862369955" >
+          <ion-label></ion-label>
+        </ion-item>
+             
+      </ion-buttons>
+      
+      <ion-item color="dark">
+        <ion-grid>
+          <ion-row >
+            
+
+            <ion-col *ngFor="let p of appPages; let i = index">
+              <ion-router-link color="light" href="{{p.url}}">{{ p.title }}</ion-router-link>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-footer>
+    <ion-toolbar color="dark" side="start" >
+        <ion-grid  >
+          <ion-row >
+            <ion-col *ngFor="let p of footerslinks; let i = index">
+              <div class="ion-text-start">
+                <ion-router-link color="light" href="{{p.url}}">{{ p.title }}</ion-router-link>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+  </ion-footer>
+
+  <ion-split-pane contentId="main-content" >
+    <ion-menu side="start" contentId="main-content" type="overlay" *ngIf="authenticated">
+      <ion-content >
+        <ion-list id="inbox-list" >
+          <ion-list-header>Inicio</ion-list-header>
+          <ion-menu-toggle auto-hide="false"  *ngFor="let p of appPages; let i = index">
+            <ion-item  routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+  
+        <ion-list id="labels-list" >
+          <ion-list-header>Marcadores</ion-list-header>
+            <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon  slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label  >{{ label }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+     <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-split-pane>
+
+
+
 </ion-app>
   
