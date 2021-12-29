@@ -15,16 +15,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
   }
-  public appPages = [
-    { title: 'Inbox', url: '/home/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/home/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/home/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/home/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/home/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/home/Spam', icon: 'warning' },
-  ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  
+ 
   
   async logout() {
     await this.authService.logout();

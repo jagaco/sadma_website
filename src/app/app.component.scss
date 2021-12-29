@@ -4,18 +4,7 @@
     --padding-top: 20px;
     --padding-bottom: 20px;
   }
-  ion-grid {
-    size: 100px;
-    
-    text-align: center;
-  }
-  ion-col {
-    size: 100px;
-    text-align: center;    
-  }
-  ion-col {
-    size-adjust: true;
-    border: 5px solid grey;
-    text-align: center;
-    
+
+  ion-item ion-button {
+    --background-hover: rgba(59, 177, 55, 0.671);
   }
