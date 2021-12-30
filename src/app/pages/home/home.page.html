@@ -1,0 +1,96 @@
+<div contentId="main-content">
+  <ion-header >
+    <ion-toolbar color="dark" >
+
+      <ion-row class="ion-aling-items-center">
+        <!-- start logo -->
+
+        <ion-col style="min-width: 200px" >
+          <img width="200" height="50" alt="" data-mu-svgfallback="https://www.sadma.com.mx/images/logoc_poster_.png?crc=514355760" src="https://www.sadma.com.mx/images/logoc.svg?crc=3862369955" >          
+        </ion-col>
+       
+        <!-- main pages links Left Side -->
+        <ion-col size="7">
+          <div class="navbar" class="ion-text-left">
+            <ion-button *ngFor="let p of headerLinksStart; let i = index" color="light" fill="clear" routerLink="{{p.url}}" routerDirection="root" routerLinkActive="active-link" class="link">
+              {{ p.title }}
+            </ion-button>
+          </div>
+        </ion-col>
+
+        <!-- main pages links Right Side -->
+        <ion-col size="2">
+          <div class="navbar" class="ion-text-right" *ngIf="!isAuthenticated" >
+            <ion-button (click)="login()" color="light" fill="clear" routerLinkActive="active-link" class="link">
+              <ion-icon name="person-circle"></ion-icon>
+              Iniciar Session
+            </ion-button>
+          </div>
+          <div class="navbar" class="ion-text-right" *ngIf="isAuthenticated" >
+            <ion-button (click)="logout()" color="light" fill="clear" routerLinkActive="active-link" class="link">
+              <ion-icon name="person-circle"></ion-icon>
+              Cerrar Session
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+</div>
+
+<div contentId="main-content"> 
+  <ion-footer>
+    <ion-toolbar color="dark" >
+        <ion-row  class="ion-aling-items-center" >
+          
+          <!-- footer Left  -->
+          <ion-col size="6" >
+            <div class="navbar" class="ion-text-left">
+                <ion-button *ngFor="let p of footersLinksStart; let i = index" color="light" fill="clear"  href="{{p.url}}">
+                  {{ p.title }}
+                </ion-button>
+            </div>
+          </ion-col>
+          
+          
+          <!-- footer right  -->
+          <ion-col size="6" >
+            <div class="navbar" class="ion-text-right">
+              <ion-button *ngFor="let p of footersLinksEnd; let i = index" color="light" fill="clear" routerLink="{{p.url}}" routerDirection="root" routerLinkActive="active-link" class="link">
+                <ion-icon name="{{p.icon}}"></ion-icon>
+                {{ p.title }}
+              </ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+</div>
+<!-- User Menu tool style="max-width: 300px" -->
+<ion-split-pane contentId="main-content"  >
+ 
+  
+  <ion-menu side="start" contentId="main-content" type="overlay" *ngIf="isAuthenticated" style="max-width: 300px; top: 45px; " >
+    <ion-content >
+      <ion-list id="inbox-list" >
+        <ion-list-header>Inicio</ion-list-header>
+        <ion-menu-toggle auto-hide="false"  *ngFor="let p of appPages; let i = index">
+          <ion-item  routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <ion-list id="labels-list" >
+        <ion-list-header>Marcadores</ion-list-header>
+          <ion-item *ngFor="let label of labels" lines="none">
+          <ion-icon  slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+          <ion-label  >{{ label }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>    
+</ion-split-pane>

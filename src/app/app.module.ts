@@ -10,9 +10,10 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HasRoleDirective } from './directives/has-role.directive';
 import { SharedDirectivesDirective } from './directives/shared-directives.directive';
+import { StartPipe } from './pages/start.pipe';
  
 @NgModule({
-  declarations: [AppComponent, HasRoleDirective, SharedDirectivesDirective],
+  declarations: [AppComponent, HasRoleDirective, SharedDirectivesDirective, StartPipe],
   entryComponents: [],
   imports: [
     BrowserModule,
